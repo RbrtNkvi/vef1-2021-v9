@@ -1,5 +1,6 @@
 // TODO importa því sem nota þarf
-import { fetchAndRenderCategory, createCategoryBackLink, fetchAndRenderLists } from './lib/ui';
+import { empty } from './lib/helpers.js';
+import { fetchAndRenderCategory, createCategoryBackLink, fetchAndRenderLists } from './lib/ui.js';
 
 /** Fjöldi frétta til að birta á forsíðu */
 const CATEGORY_ITEMS_ON_FRONTPAGE = 5;
@@ -18,8 +19,8 @@ function route() {
   const category = window.location.search;
 
   // Ef svo er, birtum fréttir fyrir þann flokk
-  if(category !== null) {
-    const param = new URLSearchParams(window.location);
+  if(category !== '') {
+    const param = new URLSearchParams(document.location.search);
     const id = param.get('category');
 
     const link = createCategoryBackLink(main, 20);
@@ -38,8 +39,8 @@ function route() {
  * vafra. Sjáum þá um að birta réttan skjá.
  */
 window.onpopstate = () => {
-  window.history.back();
+  empty(main);
+  route();
 };
-
 // Í fyrsta skipti sem vefur er opnaður birtum við það sem beðið er um út frá URL
 route();

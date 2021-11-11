@@ -9,13 +9,20 @@
   "scripts": {
     "dev": "browser-sync start --server --files main.js **/*.js styles.css index.html",
     "lint": "eslint ./**/*.js",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "copy:html": "cpy ./*.html ./build/",
+    "copy:js": "cpy ./*.js ./build/",
+    "copy:lib": "cpy ./lib/*.js ./build/lib/",
+    "copy:css": "cpy ./*.css ./build/",
+    "build": "concurrently npm:copy:*"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "2.27.5",
+    "concurrently": "^6.3.0",
+    "cpy": "^8.1.2",
     "eslint": "7.32.0",
     "eslint-config-airbnb-base": "14.2.1",
     "eslint-config-prettier": "8.3.0",
