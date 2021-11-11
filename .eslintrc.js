@@ -11,6 +11,9 @@ module.exports = {
   rules: {
     'no-restricted-syntax': 0,
     'import/prefer-default-export': 0,
+    'no-use-before-define': 0,
+    'no-plusplus': 0,
+    'no-param-reassign': 0,
     quotes: ['error', 'single'],
     'no-console': [
       'warn',
